@@ -1,0 +1,26 @@
+MÉTODOS GET
+PuxarProjetos
+PuxarMetas
+PuxarOngs
+ConferirSenha 
+PuxarHistorico
+
+MÉTODOS GET BY CATEGORIA
+PuxarProjetosEspecíficos
+PuxarMetasEspecíficas
+PuxarOngsEspecificas
+
+MÉTODOS POST
+CriarMeta
+CriarProjeto
+CriarUsuario
+
+MÉTODOS DELETE
+DeletarMeta
+DeletarProjeto
+DeletarUsuario
+
+MÉTODOS PUT
+AtualizarProjeto
+AtualizarMeta
+AtualizarUsuario

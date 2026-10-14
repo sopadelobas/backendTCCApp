@@ -15,12 +15,16 @@ public class ProjetoService {
     
     public Projeto criar(Projeto projeto) {
         projeto.setDataAbertura(LocalDate.now());
+        projeto.setMeta(projeto.getMeta());
+        projeto.setPrazo(projeto.getPrazo());
+        projeto.setDoacaoRecebida(projeto.getDoacaoRecebida());
+                
         
         return projetoRepository.save(projeto);
     }
     
     public void excluir(UUID projetoUUID) {
-        projetoRepository.deleteByUUID(projetoUUID);
+        projetoRepository.deleteById(projetoUUID);
     }
     
     public List<Projeto> listarTodos() {
