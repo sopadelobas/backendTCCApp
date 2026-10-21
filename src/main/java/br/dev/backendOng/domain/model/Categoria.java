@@ -1,26 +1,29 @@
 
 package br.dev.backendOng.domain.model;
 
+import jakarta.persistence.Entity;
 import java.util.Objects;
+import java.util.UUID;
 
+@Entity
 public class Categoria {
 
-    private Long id;
-    String nome;
+    private UUID id;
+    private String nome;
 
     public Categoria() {
     }
 
-    public Categoria(Long id, String nome) {
+    public Categoria(UUID id, String nome) {
         this.id = id;
         this.nome = nome;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

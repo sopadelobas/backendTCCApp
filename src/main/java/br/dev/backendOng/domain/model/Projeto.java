@@ -1,11 +1,13 @@
 
 package br.dev.backendOng.domain.model;
+import jakarta.persistence.Entity;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
+@Entity
 public class Projeto {
     
     private UUID id;

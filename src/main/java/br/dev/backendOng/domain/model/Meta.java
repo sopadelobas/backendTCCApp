@@ -1,15 +1,17 @@
 package br.dev.backendOng.domain.model;
 
+import jakarta.persistence.Entity;
 import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.UUID;
 
+@Entity
 public class Meta {
 
     private UUID id;
 
-    public BigDecimal quantidade;
-    public BigDecimal porcentagem;
+    private BigDecimal quantidade;
+    private BigDecimal porcentagem;
     
     public Meta() {
     }

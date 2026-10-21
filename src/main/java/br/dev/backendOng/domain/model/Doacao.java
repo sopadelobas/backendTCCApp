@@ -1,16 +1,19 @@
 
 package br.dev.backendOng.domain.model;
 
+import jakarta.persistence.Entity;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
+@Entity
 public class Doacao {
     
     private UUID id;
     public BigDecimal valor;
-    public String doadorNome;
+   //Usuario usuarioDoador a ser feito || @ManyToOne
+   //Usuario usuarioAjudado a ser feito || @ManyToOne
     public LocalDateTime dataHorario;
     public String localPais;
     
@@ -28,14 +31,6 @@ public class Doacao {
 
     public void setValor(BigDecimal valor) {
         this.valor = valor;
-    }
-
-    public String getDoadorNome() {
-        return doadorNome;
-    }
-
-    public void setDoadorNome(String doadorNome) {
-        this.doadorNome = doadorNome;
     }
 
     public LocalDateTime getDataHorario() {

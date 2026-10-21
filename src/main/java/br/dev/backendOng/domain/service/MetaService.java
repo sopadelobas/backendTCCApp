@@ -2,11 +2,14 @@ package br.dev.backendOng.domain.service;
 
 import br.dev.backendOng.domain.model.Meta;
 import br.dev.backendOng.domain.repository.MetaRepository;
+import br.dev.backendOng.exception.DomainException;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MetaService {
 
     
@@ -22,8 +25,11 @@ public class MetaService {
         return metaRepository.save(meta);
     }
     
-    public void excluirMeta (UUID metaID) {
-        metaRepository.deleteById(metaID);
+    public void excluirMeta (UUID metaUUID) {
+        if (!metaRepository.existsById(metaUUID)) {
+            throw new DomainException("A doação não existe");
+        }
+        metaRepository.deleteById(metaUUID);
     }
     
     public List<Meta> listar() {

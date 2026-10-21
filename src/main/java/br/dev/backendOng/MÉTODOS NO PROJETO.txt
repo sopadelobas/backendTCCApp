@@ -1,27 +1,29 @@
 MÉTODOS GET
-PuxarProjetos // CRIADO // TESTE
-PuxarMetas // CRIADO // TESTE
+PuxarProjetos // CRIADO // TESTE ("/projetos")
+PuxarMetas // CRIADO // TESTE ("/metas")
 PuxarOngs
 ConferirSenha 
-PuxarHistorico
+PuxarHistorico // CRIADO // TESTE ("/doacao")
 
 MÉTODOS GET BY CATEGORIA
-PuxarProjetosEspecíficos // CRIADO // TESTE
-PuxarMetasEspecíficas // CRIADO // TESTE
+PuxarProjetosEspecíficos // CRIADO // TESTE (PUXAR PROJETOS POR CATEGORIA ESTÁ AQUI!!!!!!!!!!!!!!!!) ("/projetos/projetosCategoria")
+PuxarMetasEspecíficas // CRIADO // TESTE ("/metas/("{metaID}"))
 PuxarOngsEspecificas
+PuxarDoacoesEspecificas // CRIADO // TESTE ("/doacao/("{doacaoID}"))
 
 MÉTODOS POST
-CriarMeta // CRIADO // TESTE
-CriarProjeto // CRIADO // TESTE
+CriarMeta // CRIADO // TESTE ("/projetos/("{projetoID}"))
+CriarProjeto // CRIADO // TESTE ("/metas/("{metaID}"))
 CriarUsuario
-PostarDoacao
+PostarDoacao // CRIADO // TESTE ("/doacao/("{doacaoID}"))
 
 MÉTODOS DELETE
-DeletarMeta // CRIADO // TESTE
-DeletarProjeto // CRIADO // TESTE
+DeletarMeta // CRIADO // TESTE ("/projetos/("{projetoID}"))
+DeletarProjeto // CRIADO // TESTE ("/metas/("{metaID}"))
 DeletarUsuario
+DeletarDoacao(?) // CRIADO // TESTE ("/doacao/("{doacaoID}"))
 
 MÉTODOS PUT
-AtualizarProjeto // CRIADO // TESTE
-AtualizarMeta // CRIADO // TESTE
+AtualizarProjeto // CRIADO // TESTE ("/projetos/("{projetoID}"))
+AtualizarMeta // CRIADO // TESTE ("/metas/("{metaID}"))
 AtualizarUsuario

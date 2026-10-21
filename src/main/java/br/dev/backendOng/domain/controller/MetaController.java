@@ -15,6 +15,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/metas")
 public class MetaController {
 
     @Autowired
@@ -28,12 +33,8 @@ public class MetaController {
         return metaService.criar(meta);
     }
     
-    @DeleteMapping
+    @DeleteMapping("/{projetoUUID}/{metaUUID}") 
     public ResponseEntity<Void> excluirMeta(@PathVariable UUID metaUUID) {
-       if (!metaRepository.existsById(metaUUID)) {
-            return ResponseEntity.notFound().build();
-        }
-       
        metaService.excluirMeta(metaUUID);
        return ResponseEntity.noContent().build();
     }
@@ -44,7 +45,7 @@ public class MetaController {
         return listaMetas;
     }
     
-    @GetMapping 
+    @GetMapping ("/{projetoUUID}/{metaUUID}")  
     public ResponseEntity<Meta> listarPorId(@PathVariable UUID metaUUID) {
         Optional<Meta> meta = metaService.listarMetaPorId(metaUUID);
         
@@ -55,7 +56,7 @@ public class MetaController {
         }
     }
     
-    @PutMapping
+    @PutMapping("/{projetoUUID}/{metaUUID}") 
     public ResponseEntity<UUID> atualizarMeta (@PathVariable UUID metaUUID, @RequestBody Meta metaAtualizada) {
         Optional<Meta> metaAnt = metaService.listarMetaPorId(metaUUID);
         

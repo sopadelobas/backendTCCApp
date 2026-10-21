@@ -2,7 +2,6 @@
 package br.dev.backendOng.domain.DTO;
 
 import br.dev.backendOng.domain.model.Meta;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class ProjetoDTO {

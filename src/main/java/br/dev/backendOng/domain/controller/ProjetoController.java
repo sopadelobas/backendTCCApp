@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@RestController
+@RequestMapping("/projetos")
 public class ProjetoController {
 
     @Autowired
@@ -33,12 +35,8 @@ public class ProjetoController {
         return projetoService.criar(projeto);
     }
 
-    @DeleteMapping("{projetoID}")
+    @DeleteMapping("{projetoUUID}")
     public ResponseEntity<Void> excluir(@PathVariable UUID projetoUUID) {
-        if (!projetoRepository.existsById(projetoUUID)) {
-            return ResponseEntity.notFound().build();
-        }
-
         projetoService.excluir(projetoUUID);
         return ResponseEntity.noContent().build();
     }
@@ -49,7 +47,7 @@ public class ProjetoController {
         return listaProjetos;
     }
 
-    @GetMapping
+    @GetMapping("{projetoUUID}")
     public ResponseEntity<Projeto> listarPorId(@PathVariable UUID projetoUUID) {
         Optional<Projeto> projeto = projetoService.listarPorId(projetoUUID);
 
@@ -60,7 +58,7 @@ public class ProjetoController {
         }
     }
 
-    @GetMapping
+    @GetMapping("cat/{projetoCategoria}")
     public ResponseEntity<Projeto> listarPorCategoria(@PathVariable UUID categoriaUUID) {
         List<Projeto> listaCat = projetoService.listarPorCategoria(categoriaUUID);
 
@@ -71,7 +69,7 @@ public class ProjetoController {
         return (ResponseEntity<Projeto>) listaCat;
     }
 
-    @PutMapping
+    @PutMapping("{projetoUUID}")
     public ResponseEntity<Projeto> atualizar(@PathVariable UUID projetoID,
             @RequestBody ProjetoDTO dto) {
         Optional<Projeto> projetoAnt = projetoRepository.findById(projetoID);
