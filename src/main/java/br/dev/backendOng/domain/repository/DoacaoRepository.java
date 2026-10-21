@@ -4,16 +4,13 @@
  */
 package br.dev.backendOng.domain.repository;
 
-/**
- *
- * @author Aluno
- */
-public class DoacaoRepository {
+import br.dev.backendOng.domain.model.Doacao;
+import br.dev.backendOng.domain.model.Meta;
+import java.util.List;
+import java.util.UUID;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        // TODO code application logic here
-    }
+
+public interface DoacaoRepository extends JpaRepository<Doacao, UUID> {
+  List<Meta> findbyId(UUID id);
 }

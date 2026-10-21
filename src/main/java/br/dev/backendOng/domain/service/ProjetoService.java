@@ -5,8 +5,10 @@ import br.dev.backendOng.domain.model.Projeto;
 import br.dev.backendOng.domain.repository.ProjetoRepository;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 
 public class ProjetoService {
 
@@ -24,14 +26,23 @@ public class ProjetoService {
     }
     
     public void excluir(UUID projetoUUID) {
-        projetoRepository.deleteById(projetoUUID);
+    projetoRepository.deleteById(projetoUUID);
     }
     
     public List<Projeto> listarTodos() {
         return projetoRepository.findAll();
     }
+    
+    public Optional<Projeto> listarPorId(UUID projetoID) {
+        return projetoRepository.findById(projetoID);
+    }
+    
     public Projeto atualizar(Projeto projeto) {
         return projetoRepository.save(projeto);
+    }
+    
+    public List<Projeto> listarPorCategoria (UUID categoriaId) {
+        return projetoRepository.findByCategoria_Id(categoriaId);
     }
 
 }

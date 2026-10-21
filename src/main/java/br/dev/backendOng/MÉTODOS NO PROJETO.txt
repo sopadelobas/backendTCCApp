@@ -1,26 +1,27 @@
 MÉTODOS GET
-PuxarProjetos
-PuxarMetas
+PuxarProjetos // CRIADO // TESTE
+PuxarMetas // CRIADO // TESTE
 PuxarOngs
 ConferirSenha 
 PuxarHistorico
 
 MÉTODOS GET BY CATEGORIA
-PuxarProjetosEspecíficos
-PuxarMetasEspecíficas
+PuxarProjetosEspecíficos // CRIADO // TESTE
+PuxarMetasEspecíficas // CRIADO // TESTE
 PuxarOngsEspecificas
 
 MÉTODOS POST
-CriarMeta
-CriarProjeto
+CriarMeta // CRIADO // TESTE
+CriarProjeto // CRIADO // TESTE
 CriarUsuario
+PostarDoacao
 
 MÉTODOS DELETE
-DeletarMeta
-DeletarProjeto
+DeletarMeta // CRIADO // TESTE
+DeletarProjeto // CRIADO // TESTE
 DeletarUsuario
 
 MÉTODOS PUT
-AtualizarProjeto
-AtualizarMeta
+AtualizarProjeto // CRIADO // TESTE
+AtualizarMeta // CRIADO // TESTE
 AtualizarUsuario

@@ -1,19 +1,36 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Other/File.java to edit this template
- */
 package br.dev.backendOng.domain.service;
 
-/**
- *
- * @author Aluno
- */
+import br.dev.backendOng.domain.model.Meta;
+import br.dev.backendOng.domain.repository.MetaRepository;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class MetaService {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        // TODO code application logic here
+    
+    @Autowired
+    private MetaRepository metaRepository;
+    
+    public Meta criar (Meta meta) {
+        
+        if (meta.getQuantidade() == null) {
+            throw new RuntimeException("Quantidade é obrigatória!");
+        }
+        
+        return metaRepository.save(meta);
+    }
+    
+    public void excluirMeta (UUID metaID) {
+        metaRepository.deleteById(metaID);
+    }
+    
+    public List<Meta> listar() {
+        return metaRepository.findAll();
+    }
+    
+    public Optional<Meta> listarMetaPorId (UUID metaID) {
+        return metaRepository.findById(metaID);
     }
 }
