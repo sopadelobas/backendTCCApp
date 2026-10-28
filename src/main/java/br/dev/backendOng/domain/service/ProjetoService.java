@@ -18,7 +18,6 @@ public class ProjetoService {
 
     public Projeto criar(Projeto projeto) {
         projeto.setDataAbertura(LocalDate.now());
-        projeto.setMeta(projeto.getMeta());
         projeto.setPrazo(projeto.getPrazo());
         projeto.setDoacaoRecebida(projeto.getDoacaoRecebida());
 

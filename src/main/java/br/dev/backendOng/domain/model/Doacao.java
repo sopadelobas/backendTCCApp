@@ -1,7 +1,11 @@
 
 package br.dev.backendOng.domain.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -10,12 +14,20 @@ import java.util.UUID;
 @Entity
 public class Doacao {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
-    public BigDecimal valor;
+    
+    @Column(name = "valor")
+    private BigDecimal valor;
    //Usuario usuarioDoador a ser feito || @ManyToOne
    //Usuario usuarioAjudado a ser feito || @ManyToOne
-    public LocalDateTime dataHorario;
-    public String localPais;
+    
+    @Column(name = "data_horario")
+    private LocalDateTime dataHorario;
+    
+    @Column(name = "local_pais")
+    private String localPais;
     
     
     public UUID getId() {
