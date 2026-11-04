@@ -28,8 +28,8 @@ public class MetaController {
     @Autowired
     private MetaRepository metaRepository;
     
-    @PostMapping
-    public Meta criarMeta(@RequestBody Meta meta) {
+    @PostMapping("/projeto/{projetoUUID}")
+    public Meta criarMeta(@PathVariable UUID projetoUUID, @RequestBody Meta meta) {
         return metaService.criar(meta);
     }
     

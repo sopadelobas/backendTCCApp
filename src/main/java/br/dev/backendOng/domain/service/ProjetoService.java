@@ -1,6 +1,10 @@
 package br.dev.backendOng.domain.service;
 
+import br.dev.backendOng.domain.DTO.ProjetoCriacaoDTO;
+import br.dev.backendOng.domain.DTO.ProjetoAtualizacaoDTO;
+import br.dev.backendOng.domain.model.Categoria;
 import br.dev.backendOng.domain.model.Projeto;
+import br.dev.backendOng.domain.repository.CategoriaRepository;
 import br.dev.backendOng.domain.repository.ProjetoRepository;
 import br.dev.backendOng.exception.DomainException;
 import java.time.LocalDate;
@@ -8,7 +12,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class ProjetoService {
@@ -16,11 +23,20 @@ public class ProjetoService {
     @Autowired
     private ProjetoRepository projetoRepository;
 
-    public Projeto criar(Projeto projeto) {
-        projeto.setDataAbertura(LocalDate.now());
-        projeto.setPrazo(projeto.getPrazo());
-        projeto.setDoacaoRecebida(projeto.getDoacaoRecebida());
+    @Autowired
+    private CategoriaRepository categoriaRepository;
 
+    public Projeto criar(ProjetoCriacaoDTO dto) {
+
+        Categoria categoria = categoriaRepository.findById(dto.getCategoriaId()).orElseThrow(() -> new DomainException("Categoria não encontrada"));
+
+        Projeto projeto = new Projeto();
+
+        projeto.setDataAbertura(LocalDate.now());
+        projeto.setPrazo(dto.getPrazo());
+        projeto.setDoacaoRecebida(dto.getDoacaoRecebida());
+        projeto.setCategoria(categoria);
+        
         return projetoRepository.save(projeto);
     }
 
@@ -39,8 +55,20 @@ public class ProjetoService {
         return projetoRepository.findById(projetoID);
     }
 
-    public Projeto atualizar(Projeto projeto) {
-        return projetoRepository.save(projeto);
+    public ResponseEntity<Projeto> atualizar(@PathVariable UUID projetoID,
+            @RequestBody ProjetoAtualizacaoDTO dto) {
+        Optional<Projeto> projetoAnt = projetoRepository.findById(projetoID);
+
+        if (projetoAnt.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Projeto projeto = projetoAnt.get();
+        projeto.setPrazo(dto.getPrazo());
+        projeto.setDoacaoRecebida(dto.getDoacaoRecebida());
+        projeto.setDescricao(dto.getDescricao());
+
+        return ResponseEntity.ok(projetoRepository.save(projeto));
     }
 
     public List<Projeto> listarPorCategoria(UUID categoriaId) {

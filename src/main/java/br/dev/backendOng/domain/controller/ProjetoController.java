@@ -1,7 +1,8 @@
 
 package br.dev.backendOng.domain.controller;
 
-import br.dev.backendOng.domain.DTO.ProjetoDTO;
+import br.dev.backendOng.domain.DTO.ProjetoAtualizacaoDTO;
+import br.dev.backendOng.domain.DTO.ProjetoCriacaoDTO;
 import br.dev.backendOng.domain.model.Projeto;
 import br.dev.backendOng.domain.repository.ProjetoRepository;
 import br.dev.backendOng.domain.service.ProjetoService;
@@ -31,11 +32,12 @@ public class ProjetoController {
     private ProjetoRepository projetoRepository;
 
     @PostMapping
-    public Projeto criar(@RequestBody Projeto projeto) {
-        return projetoService.criar(projeto);
+    public Projeto criar(@RequestBody ProjetoCriacaoDTO projetoDTO) {
+        return projetoService.criar(projetoDTO);
     }
 
     @DeleteMapping("{projetoUUID}")
+    
     public ResponseEntity<Void> excluir(@PathVariable UUID projetoUUID) {
         projetoService.excluir(projetoUUID);
         return ResponseEntity.noContent().build();
@@ -58,31 +60,19 @@ public class ProjetoController {
         }
     }
 
-    @GetMapping("cat/{projetoCategoria}")
-    public ResponseEntity<Projeto> listarPorCategoria(@PathVariable UUID categoriaUUID) {
+    @GetMapping("cat/{categoriaUUID}")
+    public List<Projeto> listarPorCategoria(@PathVariable UUID categoriaUUID) {
         List<Projeto> listaCat = projetoService.listarPorCategoria(categoriaUUID);
 
         if (listaCat.isEmpty()) {
             throw new DomainException("Nenhum projeto encontrado para essa categoria");
         }
 
-        return (ResponseEntity<Projeto>) listaCat;
+        return listaCat;
     }
 
-    @PutMapping("{projetoUUID}")
-    public ResponseEntity<Projeto> atualizar(@PathVariable UUID projetoID,
-            @RequestBody ProjetoDTO dto) {
-        Optional<Projeto> projetoAnt = projetoRepository.findById(projetoID);
-
-        if (projetoAnt.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-
-        Projeto projeto = projetoAnt.get();
-        projeto.setPrazo(dto.getPrazo());
-        projeto.setDoacaoRecebida(dto.getDoacaoRecebida());
-        projeto.setDescricao(dto.getDescricao());
-
-        return ResponseEntity.ok(projetoRepository.save(projeto));
+    @PutMapping("{projetoID}")
+     public Projeto atualizar(@RequestBody ProjetoAtualizacaoDTO projetoDTO) {
+        return projetoRepository.save(projetoDTO);
     }
 }

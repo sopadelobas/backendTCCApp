@@ -1,20 +1,14 @@
 
 package br.dev.backendOng.domain.DTO;
 
-import br.dev.backendOng.domain.model.Meta;
+import br.dev.backendOng.domain.model.DoacaoRecebida;
 import java.time.LocalDateTime;
 
-public class ProjetoDTO {
+public class ProjetoAtualizacaoDTO {
     
-    private Meta meta; 
-
-    public Meta getMeta() {
-        return meta;
-    }
-
-    public void setMeta(Meta meta) {
-        this.meta = meta;
-    }
+    private LocalDateTime prazo;
+    private DoacaoRecebida doacaoRecebida;
+    private String descricao;
 
     public LocalDateTime getPrazo() {
         return prazo;
@@ -24,11 +18,11 @@ public class ProjetoDTO {
         this.prazo = prazo;
     }
 
-    public String getDoacaoRecebida() {
+    public DoacaoRecebida getDoacaoRecebida() {
         return doacaoRecebida;
     }
 
-    public void setDoacaoRecebida(String doacaoRecebida) {
+    public void setDoacaoRecebida(DoacaoRecebida doacaoRecebida) {
         this.doacaoRecebida = doacaoRecebida;
     }
 
@@ -39,7 +33,5 @@ public class ProjetoDTO {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    private LocalDateTime prazo;
-    private String doacaoRecebida;
-    private String descricao;
+   
 }

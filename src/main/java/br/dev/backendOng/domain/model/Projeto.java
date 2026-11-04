@@ -45,7 +45,7 @@ public class Projeto {
     private LocalDateTime prazo;
     
     @Column(name = "doacao_recebida")
-    private String doacaoRecebida;
+    private Enum doacaoRecebida;
     
     @Column(name = "descricao")
     private String descricao;
@@ -98,11 +98,11 @@ public class Projeto {
         this.prazo = prazo;
     }
 
-    public String getDoacaoRecebida() {
+    public Enum getDoacaoRecebida() {
         return doacaoRecebida;
     }
 
-    public void setDoacaoRecebida(String doacaoRecebida) {
+    public void setDoacaoRecebida(Enum doacaoRecebida) {
         this.doacaoRecebida = doacaoRecebida;
     }
 
@@ -127,11 +127,13 @@ public class Projeto {
         return Objects.equals(this.id, other.id);
     }
 
-    public Projeto(UUID id, Meta meta, BigDecimal porcentagem, LocalDate dataAbertura, LocalDateTime prazo, String doacaoRecebida) {
+    public Projeto(UUID id, LocalDate dataAbertura, LocalDateTime prazo, Enum doacaoRecebida, String descricao, Categoria categoria) {
         this.id = id;
         this.dataAbertura = dataAbertura;
         this.prazo = prazo;
         this.doacaoRecebida = doacaoRecebida;
+        this.descricao = descricao;
+        this.categoria = categoria;
     }
-    
+
 }

@@ -1,7 +1,6 @@
 package br.dev.backendOng.domain.controller;
 
 import br.dev.backendOng.domain.model.Doacao;
-import br.dev.backendOng.domain.repository.DoacaoRepository;
 import br.dev.backendOng.domain.service.DoacaoService;
 import java.util.List;
 import java.util.Optional;
@@ -22,9 +21,6 @@ public class DoacaoController {
  
     @Autowired
     private DoacaoService doacaoService;
-    
-    @Autowired
-    private DoacaoRepository doacaoRepository;
     
     @PostMapping
     public ResponseEntity<Doacao> criar(@RequestBody Doacao doacao) {

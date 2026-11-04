@@ -1,19 +1,20 @@
 
 package br.dev.backendOng.domain.DTO;
 
+import br.dev.backendOng.domain.model.Categoria;
 import java.util.UUID;
 
 
 public class ProjetoCategoriaDTO {
     
-    private String categoria;
+    private Categoria categoria;
     private UUID projetoId;
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
