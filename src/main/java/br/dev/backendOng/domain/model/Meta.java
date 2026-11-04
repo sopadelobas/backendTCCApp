@@ -21,10 +21,12 @@ public class Meta {
     private UUID id;
 
     @Column(name = "quantidade")
-    private BigDecimal quantidade;
+    private double quantidade;
+    
+    private double quantidadeArrecadada;
     
     @Column(name = "porcentagem")
-    private BigDecimal porcentagem;
+    private double porcentagem = (quantidadeArrecadada/quantidade) * 100;
     
     @ManyToOne
     @JoinColumn(name = "projeto_id", nullable = false)
@@ -41,7 +43,7 @@ public class Meta {
     public Meta() {
     }
 
-    public Meta(UUID id, BigDecimal quantidade, BigDecimal porcentagem) {
+    public Meta(UUID id, double quantidade, double porcentagem) {
         this.id = id;
         this.quantidade = quantidade;
         this.porcentagem = porcentagem;
@@ -55,19 +57,19 @@ public class Meta {
         this.id = id;
     }
 
-    public BigDecimal getQuantidade() {
+    public double getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(BigDecimal quantidade) {
+    public void setQuantidade(double quantidade) {
         this.quantidade = quantidade;
     }
 
-    public BigDecimal getPorcentagem() {
+    public double getPorcentagem() {
         return porcentagem;
     }
 
-    public void setPorcentagem(BigDecimal porcentagem) {
+    public void setPorcentagem(double porcentagem) {
         this.porcentagem = porcentagem;
     }
 

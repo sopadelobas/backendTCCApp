@@ -34,8 +34,8 @@ public class MetaController {
     }
     
     @DeleteMapping("/{projetoUUID}/{metaUUID}") 
-    public ResponseEntity<Void> excluirMeta(@PathVariable UUID metaUUID) {
-       metaService.excluirMeta(metaUUID);
+    public ResponseEntity<Void> excluirMeta(@PathVariable UUID metaUUID, UUID projetoUUID) {
+       metaService.excluirMeta(metaUUID, projetoUUID);
        return ResponseEntity.noContent().build();
     }
     

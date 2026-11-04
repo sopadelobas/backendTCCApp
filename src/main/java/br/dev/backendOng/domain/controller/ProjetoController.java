@@ -72,7 +72,7 @@ public class ProjetoController {
     }
 
     @PutMapping("{projetoID}")
-     public Projeto atualizar(@RequestBody ProjetoAtualizacaoDTO projetoDTO) {
-        return projetoRepository.save(projetoDTO);
+     public Projeto atualizar(@RequestBody ProjetoAtualizacaoDTO projetoDTO, Projeto projeto) {
+        return projetoRepository.save(projeto);
     }
 }

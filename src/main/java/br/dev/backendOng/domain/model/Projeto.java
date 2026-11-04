@@ -1,5 +1,6 @@
 
 package br.dev.backendOng.domain.model;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,7 +11,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class Projeto {
     private LocalDateTime prazo;
     
     @Column(name = "doacao_recebida")
-    private Enum doacaoRecebida;
+    private DoacaoRecebida doacaoRecebida;
     
     @Column(name = "descricao")
     private String descricao;
@@ -98,11 +98,11 @@ public class Projeto {
         this.prazo = prazo;
     }
 
-    public Enum getDoacaoRecebida() {
+    public DoacaoRecebida getDoacaoRecebida() {
         return doacaoRecebida;
     }
 
-    public void setDoacaoRecebida(Enum doacaoRecebida) {
+    public void setDoacaoRecebida(DoacaoRecebida doacaoRecebida) {
         this.doacaoRecebida = doacaoRecebida;
     }
 
@@ -127,7 +127,7 @@ public class Projeto {
         return Objects.equals(this.id, other.id);
     }
 
-    public Projeto(UUID id, LocalDate dataAbertura, LocalDateTime prazo, Enum doacaoRecebida, String descricao, Categoria categoria) {
+    public Projeto(UUID id, LocalDate dataAbertura, LocalDateTime prazo, DoacaoRecebida doacaoRecebida, String descricao, Categoria categoria) {
         this.id = id;
         this.dataAbertura = dataAbertura;
         this.prazo = prazo;
