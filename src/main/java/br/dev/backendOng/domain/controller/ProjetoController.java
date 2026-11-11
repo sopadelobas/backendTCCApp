@@ -72,7 +72,7 @@ public class ProjetoController {
     }
 
     @PutMapping("{projetoID}")
-     public Projeto atualizar(@RequestBody ProjetoAtualizacaoDTO projetoDTO) {
+     public ResponseEntity<Projeto>(@PathVariable UUID projetoID, @RequestBody ProjetoAtualizacaoDTO projetoDTO) {
         return projetoRepository.save(projetoDTO);
     }
 }

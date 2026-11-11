@@ -36,7 +36,7 @@ public class ProjetoService {
         projeto.setPrazo(dto.getPrazo());
         projeto.setDoacaoRecebida(dto.getDoacaoRecebida());
         projeto.setCategoria(categoria);
-        
+
         return projetoRepository.save(projeto);
     }
 
@@ -55,8 +55,7 @@ public class ProjetoService {
         return projetoRepository.findById(projetoID);
     }
 
-    public ResponseEntity<Projeto> atualizar(@PathVariable UUID projetoID,
-            @RequestBody ProjetoAtualizacaoDTO dto) {
+    public ResponseEntity<Projeto> atualizar(UUID projetoID, ProjetoAtualizacaoDTO dto) {
         Optional<Projeto> projetoAnt = projetoRepository.findById(projetoID);
 
         if (projetoAnt.isEmpty()) {
@@ -68,7 +67,7 @@ public class ProjetoService {
         projeto.setDoacaoRecebida(dto.getDoacaoRecebida());
         projeto.setDescricao(dto.getDescricao());
 
-        return ResponseEntity.ok(projetoRepository.save(projeto));
+        return projetoRepository.save(projeto);
     }
 
     public List<Projeto> listarPorCategoria(UUID categoriaId) {
